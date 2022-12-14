@@ -21,11 +21,11 @@ export default {
 #app {
   width: 100%;
   height: 100%;
-  overflow-x: hidden;
+  overflow: hidden;
 }
 
 body {
-  background-image: linear-gradient(to right, #00b4db, #0083b0);
+  background-image: linear-gradient(to left, #434343 0%, #3e4444 100%);
   width: 100%;
   height: 100%;
 }</style>

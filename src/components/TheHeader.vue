@@ -25,7 +25,7 @@
 
 .counter {
 display: flex;
-justify-content: end;
+justify-content: flex-end;
 
 
 }
@@ -50,7 +50,7 @@ margin-right: 2vw;
 }
 .cart {
     margin-right: 2vw;
-    float: right;
+    margin-top: 2vh;
     padding: 6px;
      font-size: 10px;
      border-width: 0px;
