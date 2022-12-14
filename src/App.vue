@@ -25,7 +25,7 @@ export default {
 }
 
 body {
-  background-image: linear-gradient(to left, #434343 0%, #3e4444 100%);
+  background-image: linear-gradient(to bottom, #434343 0%, #a2b9bc 100%);
   width: 100%;
   height: 100%;
 }</style>

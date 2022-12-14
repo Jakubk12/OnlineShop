@@ -5,12 +5,12 @@
             <span class="cart">$</span>
         </div>
         <div class="main-nav">
-            <basic-button>Home</basic-button>
-            <basic-button>Categories</basic-button>
-            <basic-button>Man</basic-button>
-            <basic-button>Woman</basic-button>
-            <basic-button>Accesories</basic-button>
-            <basic-button>Contact</basic-button>
+           <router-link to="/pages"><basic-button>Home</basic-button></router-link>
+           <router-link to="/pages/:id"><basic-button>Categories</basic-button></router-link>
+           <router-link to="/Items/:id"><basic-button>Man</basic-button></router-link>
+           <router-link to="/Items/Woman"><basic-button>Woman</basic-button></router-link>
+           <router-link to="/Items"><basic-button>Accesories</basic-button></router-link>
+           <router-link to="/pages/contact"><basic-button>Contact</basic-button></router-link>
         </div>
     </section>
 
