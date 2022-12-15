@@ -1,3 +1,3 @@
 <template>
-    <p>131415</p>
+    <basic-section></basic-section>
 </template>

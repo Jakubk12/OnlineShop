@@ -20,6 +20,7 @@
 .header {
     height: 15vh;
     background: inherit;
+    margin: 0 auto;
 
 }
 

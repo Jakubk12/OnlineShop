@@ -1,3 +1,3 @@
 <template>
-    <p>789</p>
+    <basic-section></basic-section>
 </template>
