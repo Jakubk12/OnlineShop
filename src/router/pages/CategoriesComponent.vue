@@ -1,13 +1,13 @@
 <template>
+         
     <basic-section>
-        
-        <div class="categories">
-    <basic-button @click="sort('premium')" :class="{selected: sorting === 'premium'}">Premium</basic-button>
-    <basic-button @click="sort('middle')" :class="{selected: sorting === 'middle'}">Middle</basic-button>
-    <basic-button @click="sort('economy')" :class="{selected: sorting === 'economy'}">Economy</basic-button>
+        <div class="products">
+        <basic-button @click="filter('premium')" :class="{selected: filtering === 'premium'}">Premium</basic-button>
+    <basic-button @click="filter('middle')" :class="{selected: filtering === 'middle'}">Middle</basic-button>
+    <basic-button @click="filter('economy')" :class="{selected: filtering === 'economy'}">Economy</basic-button>
     </div>
-    <div class="products">
-        <watcher-products :products="selectedProduct" @detailsProduct="selectProduct"></watcher-products>
+        <watcher-products :products="activeProducts" @detailsProduct="selectProduct"></watcher-products>
+        <product-details :product="selectedProduct"></product-details>
 
              <!--  <watcher-products v-for="prod in StoredProducts" :key="prod.id"
          :type="prod.type"
@@ -15,10 +15,7 @@
            :material="prod.material"
             :price="prod.price"
             :destiny="prod.destiny"
-            :describe="prod.describe"></watcher-products> -->
-    </div>
-
-        
+            :describe="prod.describe"></watcher-products> -->        
     </basic-section>
 </template>
 
@@ -34,26 +31,21 @@
 <script>
 import PRODUCT_DATA from '../../product-data.js'
 import WatcherProducts from '../../components/UI/WatcherProducts.vue'
+import ProductList from '../../components/UI/ProductDetails.vue'
 import {ref} from 'vue'
 export default {
     components: {
-        WatcherProducts
+        WatcherProducts, ProductList
     },
     setup() {
         const selectedProduct = ref(null)
-        const products = PRODUCT_DATA
+        const activeProducts = PRODUCT_DATA;
 
         function selectProduct(pid) {
             selectedProduct.value = products((prod) => prod.id === pid)
-
         }
-
-        return { selectedProduct, products, selectProduct}
-
-
+        return { selectedProduct, activeProducts, selectProduct}
     }
-
-
 
 }
 </script>

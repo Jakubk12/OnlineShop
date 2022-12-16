@@ -17,6 +17,7 @@ button {
 	text-decoration:none;
     border: 0;
     transition: 1500ms;
+	max-height: 5vh;
     
 
 }

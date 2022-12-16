@@ -16,24 +16,24 @@ export default [
         glass: 'saphire',
         price: '360',
         destine: 'men',
-        description: '',
+        description: 'An elegance and endurant silver watch for men',
     },
     {
-        id: 'Hugo',
-        type: 'swiss',
-        name: 'Hugo Boss Hero 1513755',
+        id: 'Hugo view',
+        type: 'quartz',
+        name: 'HUGO BOSS VIEW',
         glass: 'saphire',
-        price: '360',
+        price: '500',
         destine: 'men',
-        description: ''
+        description: 'A sport watch for men with waterproof until 5 atmospheres'
     },
     {
-        id: 'Hugo',
-        type: 'swiss',
-        name: 'Hugo Boss Hero 1513755',
-        glass: 'saphire',
-        price: '360',
+        id: 'Citizen',
+        type: 'quartz',
+        name: 'Citizen Elegance BI5070-57L',
+        glass: 'mineral',
+        price: '90',
         destine: 'men',
-        description: '',
+        description: 'Watch for men with high endurant and good taste with precisious quartz mechanism',
     }
 ]
