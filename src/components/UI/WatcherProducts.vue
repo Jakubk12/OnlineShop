@@ -76,13 +76,12 @@ export default {
         }
       });
     })
-
-        
-        
-
-
         return {
-            filters, displayedProducts, 
+            filters,
+            displayedProducts,
+            accesibleProducts,
+            enterfind,
+            activeProducts
         }
     }
 }
