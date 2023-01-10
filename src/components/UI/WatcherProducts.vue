@@ -5,6 +5,7 @@
     <basic-button @click="filterEconomic">Economy</basic-button>
   </div>
   <div class="inner-container">
+    <!-- -->
     <products-component
       v-for="product in displayedProducts"
       :key="product.id"
@@ -146,20 +147,20 @@ export default {
         (prd) => prd.price >= 1000
       );
     }
-    // function expectedProducts() {
-    //   displayedProducts.value = displayedProducts.value.filter((prd1) => {
-    //     if (prd1.price < 250) {
-    //       return prd1.price < 250 && filters.value === "economy";
-    //     } else if (prd1.price > 1000) {
-    //       return prd1.price > 1000 && filters.value === "premium";
-    //     } else {
-    //       prd1.price > 250 && prd1.price < 1000;
-    //       return (
-    //         prd1.price > 250 && prd1.price < 1000 && filters.value === "middle"
-    //       );
-    //     }
-    //   });
-    // }
+    function expectedProducts() {
+      displayedProducts.value = displayedProducts.value.filter((prd1) => {
+        if (prd1.price < 250) {
+          return prd1.price < 250 && filters.value === "economy";
+        } else if (prd1.price > 1000) {
+          return prd1.price > 1000 && filters.value === "premium";
+        } else {
+          prd1.price > 250 && prd1.price < 1000;
+          return (
+            prd1.price > 250 && prd1.price < 1000 && filters.value === "middle"
+          );
+        }
+      });
+    }
     function filter(mode) {
       filters.value = mode;
     }
@@ -222,6 +223,7 @@ export default {
       filterMiddle,
       filterPremium,
       displayedProducts,
+      expectedProducts,
     };
   },
 
