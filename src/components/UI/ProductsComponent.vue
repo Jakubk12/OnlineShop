@@ -6,7 +6,8 @@
       <li v-if="detailsAreVisible" class="dot">Glass: {{ glass }}</li>
       <li v-if="detailsAreVisible" class="dot">Destination: {{ destiny }}</li>
       <li v-if="detailsAreVisible" class="dot">{{ description }}</li>
-      <li class="dot-price">Price: {{ price }} $</li>
+      <li class="dot-price">${{ price }}</li>
+      <img v-if="!detailsAreVisible" :src="img" />
       <div class="basic">
         <basic-inner-button @click="viewDetails"> Details</basic-inner-button>
         <basic-inner-button v-if="detailsAreVisible" @click="AddToCart"
@@ -28,7 +29,7 @@ export default {
     "destiny",
     "description",
     "price",
-    "image",
+    "img",
   ],
   methods: {},
   setup() {
@@ -49,6 +50,7 @@ export default {
   display: flex;
   justify-content: space-around;
   list-style-type: none;
+
   .dot,
   .dot-price {
     margin-top: 1vh;
@@ -70,8 +72,9 @@ export default {
 .dot-price {
   color: green;
 }
-.picture {
-  width: 10rem;
-  height: 10rem;
+
+img {
+  width: 10vw;
+  height: 20vh;
 }
 </style>

@@ -1,3 +1,1 @@
-<template>
-    <basic-section></basic-section>
-</template>
+<template><basic-section></basic-section></template>

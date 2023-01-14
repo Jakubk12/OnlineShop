@@ -29,6 +29,11 @@
         </div>
       </div>
     </div>
+    <div class="time-box">
+      <ul>
+        <li>{{ currTime }}</li>
+      </ul>
+    </div>
     <div class="empty"></div>
   </section>
 </template>
@@ -36,8 +41,9 @@
 <style lang="scss" scoped>
 section {
   width: 100%;
-  min-height: 30vh;
-  background: #2c1479;
+  height: auto;
+  background: #001025;
+  margin-bottom: 0 auto;
 }
 .button-box {
   align-content: space-between;
@@ -58,7 +64,7 @@ section {
   height: 9rem;
   width: 9rem;
   border-radius: 50%;
-  background: grey;
+  background: #afa1a1;
   position: relative;
   top: 8px;
   left: 8px;
@@ -69,7 +75,13 @@ section {
   height: 10rem;
   width: 10rem;
   border-radius: 50%;
-  background: radial-gradient(#333, #5b5b5b 75%, #eee 25%);
+  background: linear-gradient(
+    180deg,
+    rgba(186, 186, 186, 1) 0%,
+    rgba(124, 116, 116, 1) 16%,
+    rgba(0, 0, 0, 1) 40%,
+    rgba(171, 171, 171, 1) 67%
+  );
   position: relative;
   bottom: 45px;
 }
@@ -161,7 +173,7 @@ section {
 .line {
   z-index: 1;
   position: absolute;
-  background: linear-gradient(to bottom, #333, #333 50%, #333 75%, grey 75%);
+  background: linear-gradient(to bottom, #333, #333 50%, #333 75%, #afa1a1 75%);
   height: 85px;
   width: 6px;
   border-top-right-radius: 80%;
@@ -171,30 +183,48 @@ section {
 
   -webkit-animation: 10s infinite linear;
   -o-animation: rotating 10s infinite linear;
-  animation: rotating 10s infinite linear;
+  animation: rotating 60s infinite linear;
 }
 @keyframes rotating {
-  25% {
-  }
-  50% {
-  }
-  75% {
-  }
   100% {
     transform: rotateZ(360deg);
   }
+}
+.time-box {
+  display: flex;
+  width: 15vw;
+  height: 15vh;
 }
 </style>
 
 <script>
 import FooterButton from "../FooterButton.vue";
+import axios from "axios";
 export default {
   components: { FooterButton },
-
+  data() {
+    return {
+      currTime: "",
+    };
+  },
   methods: {
     switchToAbout() {
       this.$router.push("/pages/contact");
     },
+    settingCurrentTime() {
+      axios
+        .get("https://www.timeapi.io/api/Time/current/zone")
+        .then((response) => {
+          this.currTime = response.data.dateTime.toFixed(3);
+        })
+
+        .catch((er) => {
+          console.error("cannot fetch time", er);
+        });
+    },
+  },
+  created() {
+    this.settingCurrentTime();
   },
 };
 </script>

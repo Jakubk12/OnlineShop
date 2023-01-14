@@ -1,9 +1,7 @@
 <template>
-  <div id="app">
-    <the-header></the-header>
-    <router-view></router-view>
-    <the-footer></the-footer>
-  </div>
+  <the-header></the-header>
+  <router-view></router-view>
+  <the-footer></the-footer>
 </template>
 
 <script>
@@ -21,14 +19,9 @@ export default {
 <style lang="scss">
 #app {
   width: 100%;
-  height: 100%;
-  overflow: hidden;
   font-family: Arial;
-}
-
-body {
-  background-image: linear-gradient(to bottom, #434343 0%, #a2b9bc 100%);
-  width: 100%;
-  height: 100%;
+  background: linear-gradient(to bottom, #434343 0%, #a2b9bc 100%);
+  min-height: 100vh auto;
+  overflow: visible;
 }
 </style>

@@ -4,6 +4,7 @@
 
 <style lang="scss" scoped>
 button {
+  color: #fff;
   width: 5vw;
   height: 5vh;
   background: inherit;
@@ -13,10 +14,10 @@ button {
   border-right: 0;
   border-top: 0;
   border-bottom: 0;
+  border-color: #fff;
   margin-left: 15rem;
   cursor: pointer;
   &:hover {
-    background: white;
     scale: 1.1;
   }
 }

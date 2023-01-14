@@ -1,52 +1,65 @@
 <template>
-  <div class="products">
-    <basic-button @click="filterPremium">Premium</basic-button>
-    <basic-button @click="filterMiddle">Middle</basic-button>
-    <basic-button @click="filterEconomic">Economy</basic-button>
-  </div>
-  <div class="inner-container">
-    <!-- -->
-    <products-component
-      v-for="product in displayedProducts"
-      :key="product.id"
-      :type="product.type"
-      :name="product.name"
-      :glass="product.glass"
-      :price="product.price"
-      :destiny="product.destiny"
-      :description="product.description"
-      :image="product.image"
-      :id="product.id"
-    ></products-component>
-  </div>
+  <basic>
+    <basic-sidebar>
+      <div class="products">
+        <span>Filter by price class</span>
+        <basic-button @click="filterPremium">Premium</basic-button>
+        <basic-button @click="filterMiddle">Middle</basic-button>
+        <basic-button @click="filterEconomic">Economy</basic-button>
+        <span> Sort </span>
+
+        <basic-inner-button>highest price</basic-inner-button>
+        <basic-inner-button>lowest price</basic-inner-button>
+        <basic-inner-button>Name</basic-inner-button>
+      </div>
+    </basic-sidebar>
+    <div class="inner-container">
+      <!-- -->
+      <products-component
+        v-for="product in displayedProducts"
+        :key="product.id"
+        :type="product.type"
+        :name="product.name"
+        :glass="product.glass"
+        :price="product.price"
+        :destiny="product.destiny"
+        :description="product.description"
+        :img="product.img"
+        :id="product.id"
+      ></products-component>
+    </div>
+  </basic>
 </template>
 
 <style lang="scss" scoped>
+basic {
+  display: flex;
+}
 .products {
   display: flex;
-  justify-content: space-evenly;
-  margin-top: 10vh;
+  flex-wrap: wrap;
+  flex-direction: column;
+  align-content: space-between;
 }
 .inner-container {
-  height: 75vh auto;
+  height: auto;
   width: auto;
   display: grid;
   list-style-type: none;
   flex-direction: row;
   flex-wrap: wrap;
-  grid-template-columns: 33% 33% 33%;
+  grid-template-columns: 25% 25% 25% 25%;
   grid-template-rows: 3;
 }
 </style>
 
 <script>
 import ProductsComponent from "./ProductsComponent.vue";
-import { computed, ref } from "vue";
+import { computed, ref, provide } from "vue";
 export default {
   components: {
     ProductsComponent,
   },
-
   setup() {
     const displayedProducts = ref([
       {
@@ -57,8 +70,7 @@ export default {
         price: 240,
         destiny: "men",
         description: "Elegance classic Watch with black belt",
-        image:
-          "https://dolinski.pl/images/ab__webp/thumbnails/600/800/detailed/1/Delbana-Florentino-416016826062_jpg.webp",
+        img: "https://dolinski.pl/images/ab__webp/detailed/1/Delbana-Florentino-416016826062_jpg.webp",
       },
       //Hugo Boss Hero 1513755
       {
@@ -69,6 +81,7 @@ export default {
         price: 360,
         destiny: "men",
         description: "An elegance and endurant silver watch for men",
+        img: "https://zegarkinareke.pl/userdata/public/gfx/4750.jpg",
       },
       {
         id: "2",
@@ -79,6 +92,7 @@ export default {
         destiny: "men",
         description:
           "A sport watch for men with waterproof until 5 atmospheres",
+        img: "https://wkruk.pl/product_picture/square_1024/cdc0a94a1cd7c4a9f6e3843a50a78cfb.jpg",
       },
       {
         id: "3",
@@ -89,6 +103,7 @@ export default {
         destiny: "men",
         description:
           "Watch for men with high endurant and good taste with precisious quartz mechanism",
+        img: "https://www.zegarmistrz.com/userdata/gfx/52990.jpg",
       },
       {
         id: "4",
@@ -99,18 +114,31 @@ export default {
         destiny: "men",
         description:
           "An casual men watch  with classic character and silver belt, waterproof until 5 meters",
+        img: "https://dolinski.pl/images/ab__webp/detailed/1/Doxa-165-10-015-10_jpg.webp",
       },
       {
         id: "5",
         type: "automatic",
         name: "Doxa SUB 200 Divingstar Automatic 799.10.361.31",
         glass: "sapphire with antireflex",
-        price: 90,
+        price: 1200,
         destiny: "men",
         description:
           "Premium men watch with 200 meters waterproof. It keep your attention by unusual yellow color",
+        img: "https://zegarownia.pl/media/catalog/product/cache/1/zoomimage/x1600/z/e/zegarek-meski-doxa-sub-200-divingstar-automatic-799-10-361-31.webp",
+      },
+      {
+        id: "6",
+        type: "	Citizen Eco-Drive Satellite cal. F900",
+        name: "Citizen CC9015-54E",
+        glass: "saphire",
+        price: "1300",
+        destiny: "men",
+        description: "High quality watch for active mens, made by Casio.",
+        img: "https://zegarownia.pl/media/catalog/product/cache/1/zoomimage/x1600/z/e/zegarek-meski-citizen-satellite-wave-cc9015-54e.webp",
       },
     ]);
+    provide(displayedProducts, "displayedProducts");
     const filters = ref(null);
     // const expectedProducts = computed(function () {
     //   if (!filters.value) {
