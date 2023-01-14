@@ -6,6 +6,7 @@ import BasicContainer from "./components/UI/BasicContainer.vue";
 import BasicSidebar from "./components/UI/BasicSidebar.vue";
 import router from "./router/index.js";
 import BasicSection from "./components/UI/BasicSection.vue";
+import store from "./stores/index.js";
 
 const app = createApp(App);
 app.component("basic-button", BasicButton);
@@ -14,4 +15,5 @@ app.component("basic-container", BasicContainer);
 app.component("basic-sidebar", BasicSidebar);
 app.component("basic-section", BasicSection);
 app.use(router);
+app.use(store);
 app.mount("#app");

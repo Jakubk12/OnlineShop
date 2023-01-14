@@ -1,5 +1,5 @@
 <template>
-  <basic>
+  <div class="basic">
     <basic-sidebar>
       <div class="products">
         <span>Filter by price class</span>
@@ -8,8 +8,14 @@
         <basic-button @click="filterEconomic">Economy</basic-button>
         <span> Sort </span>
 
-        <basic-inner-button>highest price</basic-inner-button>
-        <basic-inner-button>lowest price</basic-inner-button>
+        <basic-inner-button
+          @click="sort('highest')"
+          :class="{ selected: sorting === 'highest' }"
+          >highest price</basic-inner-button
+        >
+        <basic-inner-button @click="sortingByPrice"
+          >lowest price</basic-inner-button
+        >
         <basic-inner-button>Name</basic-inner-button>
       </div>
     </basic-sidebar>
@@ -28,11 +34,14 @@
         :id="product.id"
       ></products-component>
     </div>
-  </basic>
+  </div>
 </template>
 
 <style lang="scss" scoped>
-basic {
+span {
+  text-align: center;
+}
+.basic {
   display: flex;
 }
 .products {
@@ -175,23 +184,37 @@ export default {
         (prd) => prd.price >= 1000
       );
     }
-    function expectedProducts() {
-      displayedProducts.value = displayedProducts.value.filter((prd1) => {
-        if (prd1.price < 250) {
-          return prd1.price < 250 && filters.value === "economy";
-        } else if (prd1.price > 1000) {
-          return prd1.price > 1000 && filters.value === "premium";
+    // function expectedProducts() {
+    //   displayedProducts.value = displayedProducts.value.filter((prd1) => {
+    //     if (prd1.price < 250) {
+    //       return prd1.price < 250 && filters.value === "economy";
+    //     } else if (prd1.price > 1000) {
+    //       return prd1.price > 1000 && filters.value === "premium";
+    //     } else {
+    //       prd1.price > 250 && prd1.price < 1000;
+    //       return (
+    //         prd1.price > 250 && prd1.price < 1000 && filters.value === "middle"
+    //       );
+    //     }
+    //   });
+    // }
+    function sort(mode) {
+      sorting.value = mode;
+    }
+    const sorting = ref(null);
+    const sortingByPrice = computed(function () {
+      displayedProducts.value = displayedProducts.value.sort((p1, p2) => {
+        if (sorting.value === "highest" && p1.price < p2.price) {
+          return 1;
+        } else if (sorting.value === "highest") {
+          return 1;
+        } else if (sorting.value === "lowest" && p1.price > p2.price) {
+          return -1;
         } else {
-          prd1.price > 250 && prd1.price < 1000;
-          return (
-            prd1.price > 250 && prd1.price < 1000 && filters.value === "middle"
-          );
+          return 0;
         }
       });
-    }
-    function filter(mode) {
-      filters.value = mode;
-    }
+    });
     //   const enterfind = ref("");
     //   const selectedCategProducts = ref("");
     //   const accesibleProducts = computed(function () {
@@ -245,13 +268,14 @@ export default {
     //     });
     //   });
     return {
-      filter,
       filters,
       filterEconomic,
       filterMiddle,
       filterPremium,
       displayedProducts,
-      expectedProducts,
+      sortingByPrice,
+      sort,
+      sorting,
     };
   },
 
