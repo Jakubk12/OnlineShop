@@ -81,6 +81,16 @@
   display: flex;
   justify-content: center;
   background: #e94b;
-  position: relative;
+  margin-bottom: 1rem;
+}
+@media all and(max-width: 650px) {
+  .main-nav {
+    display: grid;
+    grid-template-columns: 33% 33% 33%;
+  }
+  .corner,
+  .cart {
+    margin-right: 8vw;
+  }
 }
 </style>

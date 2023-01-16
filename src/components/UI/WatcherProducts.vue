@@ -1,6 +1,6 @@
 <template>
   <div class="basic">
-    <basic-sidebar>
+    <basic-sidebar style="height: 100vh">
       <div class="products">
         <span>Filter by price class</span>
         <basic-button @click="filterPremium">Premium</basic-button>
@@ -8,15 +8,14 @@
         <basic-button @click="filterEconomic">Economy</basic-button>
         <span> Sort </span>
 
-        <basic-inner-button
-          @click="sort('highest')"
-          :class="{ selected: sorting === 'highest' }"
+        <basic-inner-button @click="higherPrice"
           >highest price</basic-inner-button
         >
-        <basic-inner-button @click="sortingByPrice"
+        <basic-inner-button @click="lowerPrice"
           >lowest price</basic-inner-button
         >
-        <basic-inner-button>Name</basic-inner-button>
+        <basic-inner-button @click="sortAlphA">Name A-Z</basic-inner-button>
+        <basic-inner-button @click="sortAlphZ">Name Z-A</basic-inner-button>
       </div>
     </basic-sidebar>
     <div class="inner-container">
@@ -52,13 +51,31 @@ span {
 }
 .inner-container {
   height: auto;
-  width: auto;
+  width: 90vw;
   display: grid;
   list-style-type: none;
   flex-direction: row;
   flex-wrap: wrap;
   grid-template-columns: 25% 25% 25% 25%;
   grid-template-rows: 3;
+}
+@media screen and (max-width: 1200px) {
+  .inner-container {
+    grid-template-columns: 33% 33% 33%;
+  }
+}
+@media screen and (max-width: 900px) {
+  .inner-container {
+    grid-template-columns: 50% 50%;
+    grid-template-rows: 1;
+    width: 100vw;
+  }
+}
+@media screen and (max-width: 550px) {
+  .inner-container {
+    grid-template-columns: 100%;
+    margin-left: 1rem;
+  }
 }
 </style>
 
@@ -184,6 +201,50 @@ export default {
         (prd) => prd.price >= 1000
       );
     }
+    function lowerPrice() {
+      displayedProducts.value = displayedProducts.value.sort((p1, p2) => {
+        if (p1.price > p2.price) {
+          return 1;
+        } else if (p1.price < p2.price) {
+          return -1;
+        } else {
+          return 0;
+        }
+      });
+    }
+    function higherPrice() {
+      displayedProducts.value = displayedProducts.value.sort((p1, p2) => {
+        if (p2.price > p1.price) {
+          return 1;
+        } else if (p2.price < p1.price) {
+          return -1;
+        } else {
+          return 0;
+        }
+      });
+    }
+    function sortAlphA() {
+      displayedProducts.value = displayedProducts.value.sort((p1, p2) => {
+        if (p1.name > p2.name) {
+          return 1;
+        } else if (p1.name < p2.name) {
+          return -1;
+        } else {
+          return 0;
+        }
+      });
+    }
+    function sortAlphZ() {
+      displayedProducts.value = displayedProducts.value.sort((p1, p2) => {
+        if (p2.name > p1.name) {
+          return 1;
+        } else if (p2.name < p1.name) {
+          return -1;
+        } else {
+          return 0;
+        }
+      });
+    }
     // function expectedProducts() {
     //   displayedProducts.value = displayedProducts.value.filter((prd1) => {
     //     if (prd1.price < 250) {
@@ -198,23 +259,23 @@ export default {
     //     }
     //   });
     // }
-    function sort(mode) {
-      sorting.value = mode;
-    }
-    const sorting = ref(null);
-    const sortingByPrice = computed(function () {
-      displayedProducts.value = displayedProducts.value.sort((p1, p2) => {
-        if (sorting.value === "highest" && p1.price < p2.price) {
-          return 1;
-        } else if (sorting.value === "highest") {
-          return 1;
-        } else if (sorting.value === "lowest" && p1.price > p2.price) {
-          return -1;
-        } else {
-          return 0;
-        }
-      });
-    });
+    // function sort(mode) {
+    //   sorting.value = mode;
+    // }
+    // const sorting = ref(null);
+    // const sortingByPrice = computed(function () {
+    //   displayedProducts.value = displayedProducts.value.sort((p1, p2) => {
+    //     if (sorting.value === "highest" && p1.price < p2.price) {
+    //       return 1;
+    //     } else if (sorting.value === "highest") {
+    //       return 1;
+    //     } else if (sorting.value === "lowest" && p1.price > p2.price) {
+    //       return -1;
+    //     } else {
+    //       return 0;
+    //     }
+    //   });
+    // });
     //   const enterfind = ref("");
     //   const selectedCategProducts = ref("");
     //   const accesibleProducts = computed(function () {
@@ -273,9 +334,10 @@ export default {
       filterMiddle,
       filterPremium,
       displayedProducts,
-      sortingByPrice,
-      sort,
-      sorting,
+      sortAlphA,
+      sortAlphZ,
+      lowerPrice,
+      higherPrice,
     };
   },
 

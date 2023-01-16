@@ -1,21 +1,19 @@
 <template>
-  <ul class="basic">
-    <basic-container style="max-width: 15vw">
-      <li class="dot">{{ name }}</li>
-      <li v-if="detailsAreVisible" class="dot">Type: {{ type }}</li>
-      <li v-if="detailsAreVisible" class="dot">Glass: {{ glass }}</li>
-      <li v-if="detailsAreVisible" class="dot">Destination: {{ destiny }}</li>
-      <li v-if="detailsAreVisible" class="dot">{{ description }}</li>
-      <li class="dot-price">${{ price }}</li>
-      <img v-if="!detailsAreVisible" :src="img" />
-      <div class="basic">
-        <basic-inner-button @click="viewDetails"> Details</basic-inner-button>
-        <basic-inner-button v-if="detailsAreVisible" @click="AddToCart"
-          >Add to Cart</basic-inner-button
-        >
-      </div>
-    </basic-container>
-  </ul>
+  <basic-container>
+    <li class="dot">{{ name }}</li>
+    <li v-if="detailsAreVisible" class="dot">Type: {{ type }}</li>
+    <li v-if="detailsAreVisible" class="dot">Glass: {{ glass }}</li>
+    <li v-if="detailsAreVisible" class="dot">Destination: {{ destiny }}</li>
+    <li v-if="detailsAreVisible" class="dot">{{ description }}</li>
+    <li class="dot-price">${{ price }}</li>
+    <img v-if="!detailsAreVisible" :src="img" />
+    <div class="basic">
+      <basic-inner-button @click="viewDetails"> Details</basic-inner-button>
+      <basic-inner-button v-if="detailsAreVisible" @click="AddToCart"
+        >Add to Cart</basic-inner-button
+      >
+    </div>
+  </basic-container>
 </template>
 
 <script>
@@ -50,6 +48,7 @@ export default {
   display: flex;
   justify-content: space-around;
   list-style-type: none;
+  margin: 0;
 
   .dot,
   .dot-price {
@@ -74,7 +73,24 @@ export default {
 }
 
 img {
-  width: 10vw;
+  width: 100%;
   height: 20vh;
+}
+@media all and (min-width: 1400px) {
+  img {
+    width: 100%;
+  }
+}
+@media all and(max-width: 1200px) {
+  .dot,
+  .dot-price {
+    font-size: small;
+  }
+}
+@media all and(max-width: 500px) {
+  .dot,
+  .dot-price {
+    font-size: x-small;
+  }
 }
 </style>

@@ -28,4 +28,10 @@ button:active {
   scale: 1.1;
   color: #d24dff;
 }
+@media all and (max-width: 1050px) {
+  button {
+    font-size: 10px;
+    padding: 10px 10px;
+  }
+}
 </style>

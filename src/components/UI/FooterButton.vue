@@ -21,4 +21,14 @@ button {
     scale: 1.1;
   }
 }
+@media all and(max-width: 700px) {
+  button {
+    margin-left: 6rem;
+  }
+}
+@media all and(max-width: 400px) {
+  button {
+    margin-left: 3rem;
+  }
+}
 </style>

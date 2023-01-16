@@ -10,7 +10,7 @@ button {
   cursor: pointer;
   color: #ffffff;
   font-family: Arial;
-  font-size: 15px;
+  font-size: auto;
   font-weight: bold;
   padding: 15px 24px;
   text-decoration: none;
