@@ -7,6 +7,11 @@
     <li v-if="detailsAreVisible" class="dot">{{ description }}</li>
     <li class="dot-price">${{ price }}</li>
     <img v-if="!detailsAreVisible" :src="img" />
+    <ul>
+      Amount:
+      <li class="red" v-if="!hasLowAmount">{{ amount }}</li>
+      <li class="green" v-if="hasLowAmount">{{ amount }}</li>
+    </ul>
     <div class="basic">
       <basic-inner-button @click="viewDetails"> Details</basic-inner-button>
       <basic-inner-button v-if="detailsAreVisible" @click="AddToCart"
@@ -17,7 +22,7 @@
 </template>
 
 <script>
-import { ref } from "vue";
+import { ref, computed } from "vue";
 export default {
   props: [
     "id",
@@ -28,6 +33,7 @@ export default {
     "description",
     "price",
     "img",
+    "amount",
   ],
   methods: {},
   setup() {
@@ -35,9 +41,18 @@ export default {
     function viewDetails() {
       detailsAreVisible.value = !detailsAreVisible.value;
     }
+    const hasPositiveChange = computed(function () {
+      return amount.value < 5;
+    });
+    //function getRandomInt() {
+
+    //   };
+
     return {
       viewDetails,
       detailsAreVisible,
+      hasPositiveChange,
+      //  getRandomInt,
     };
   },
 };
@@ -92,5 +107,11 @@ img {
   .dot-price {
     font-size: x-small;
   }
+}
+.green {
+  color: green;
+}
+.red {
+  color: red;
 }
 </style>

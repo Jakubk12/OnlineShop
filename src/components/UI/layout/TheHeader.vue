@@ -2,7 +2,7 @@
   <section class="header">
     <div class="counter">
       <h1 class="corner">Your cart:</h1>
-      <span class="cart">$</span>
+      <span class="cart" @click="checkChart">$</span>
     </div>
     <div class="main-nav">
       <router-link to="/pages"><basic-button>Home</basic-button></router-link>
@@ -66,7 +66,7 @@
   border-radius: 9px;
   box-shadow: 0px 0px 13px rgba(66, 66, 66, 0.21);
   text-shadow: 0px 0px 10px rgba(66, 66, 66, 0.75);
-  width: 3vw;
+  width: 6vw;
   height: 1.5vh;
   font-weight: 900;
   font-size: large;
@@ -94,3 +94,13 @@
   }
 }
 </style>
+
+<script>
+export default {
+  methods: {
+    checkChart() {
+      this.$router.push("/Amounts/Cart");
+    },
+  },
+};
+</script>

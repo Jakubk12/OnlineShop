@@ -31,7 +31,7 @@
     </div>
     <div class="time-box">
       <ul>
-        <li>{{ currTime }}</li>
+        <li class="api">{{ currTime }}</li>
       </ul>
     </div>
     <div class="empty"></div>
@@ -195,6 +195,10 @@ section {
   width: 15vw;
   height: 15vh;
 }
+.api {
+  list-style: none;
+  color: white;
+}
 </style>
 
 <script>
@@ -213,9 +217,13 @@ export default {
     },
     settingCurrentTime() {
       axios
-        .get("https://www.timeapi.io/api/Time/current/zone")
+        .get(
+          "https://www.timeapi.io/api/Time/current/zone?timeZone=Europe/Warsaw"
+        )
         .then((response) => {
-          this.currTime = response.data.dateTime.toFixed(3);
+          setInterval(() => {
+            this.currTime = response.data.time;
+          });
         })
 
         .catch((er) => {

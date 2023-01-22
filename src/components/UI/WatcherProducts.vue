@@ -3,9 +3,15 @@
     <basic-sidebar style="height: 100vh">
       <div class="products">
         <span>Filter by price class</span>
-        <basic-button @click="filterPremium">Premium</basic-button>
-        <basic-button @click="filterMiddle">Middle</basic-button>
-        <basic-button @click="filterEconomic">Economy</basic-button>
+        <basic-button @click="filterPremium" style="color: #d24dff"
+          >Premium</basic-button
+        >
+        <basic-button @click="filterMiddle" style="color: #d24dff"
+          >Middle</basic-button
+        >
+        <basic-button @click="filterEconomic" style="color: #d24dff"
+          >Economy</basic-button
+        >
         <span> Sort </span>
 
         <basic-inner-button @click="higherPrice"
@@ -30,6 +36,7 @@
         :destiny="product.destiny"
         :description="product.description"
         :img="product.img"
+        :amount="product.amount"
         :id="product.id"
       ></products-component>
     </div>
@@ -40,11 +47,11 @@
 span {
   text-align: center;
 }
-.basic {
+.basic,
+.products {
   display: flex;
 }
 .products {
-  display: flex;
   flex-wrap: wrap;
   flex-direction: column;
   align-content: space-between;
@@ -81,7 +88,9 @@ span {
 
 <script>
 import ProductsComponent from "./ProductsComponent.vue";
-import { computed, ref, provide } from "vue";
+//import { useProductStore } from "@/stores/modules/CartStore.js";
+
+import { created, ref, provide } from "vue";
 export default {
   components: {
     ProductsComponent,
@@ -97,6 +106,7 @@ export default {
         destiny: "men",
         description: "Elegance classic Watch with black belt",
         img: "https://dolinski.pl/images/ab__webp/detailed/1/Delbana-Florentino-416016826062_jpg.webp",
+        amount: 0,
       },
       //Hugo Boss Hero 1513755
       {
@@ -108,6 +118,7 @@ export default {
         destiny: "men",
         description: "An elegance and endurant silver watch for men",
         img: "https://zegarkinareke.pl/userdata/public/gfx/4750.jpg",
+        amount: 0,
       },
       {
         id: "2",
@@ -119,6 +130,7 @@ export default {
         description:
           "A sport watch for men with waterproof until 5 atmospheres",
         img: "https://wkruk.pl/product_picture/square_1024/cdc0a94a1cd7c4a9f6e3843a50a78cfb.jpg",
+        amount: 0,
       },
       {
         id: "3",
@@ -130,6 +142,7 @@ export default {
         description:
           "Watch for men with high endurant and good taste with precisious quartz mechanism",
         img: "https://www.zegarmistrz.com/userdata/gfx/52990.jpg",
+        amount: 0,
       },
       {
         id: "4",
@@ -141,6 +154,7 @@ export default {
         description:
           "An casual men watch  with classic character and silver belt, waterproof until 5 meters",
         img: "https://dolinski.pl/images/ab__webp/detailed/1/Doxa-165-10-015-10_jpg.webp",
+        amount: 0,
       },
       {
         id: "5",
@@ -152,6 +166,7 @@ export default {
         description:
           "Premium men watch with 200 meters waterproof. It keep your attention by unusual yellow color",
         img: "https://zegarownia.pl/media/catalog/product/cache/1/zoomimage/x1600/z/e/zegarek-meski-doxa-sub-200-divingstar-automatic-799-10-361-31.webp",
+        amount: 0,
       },
       {
         id: "6",
@@ -162,30 +177,13 @@ export default {
         destiny: "men",
         description: "High quality watch for active mens, made by Casio.",
         img: "https://zegarownia.pl/media/catalog/product/cache/1/zoomimage/x1600/z/e/zegarek-meski-citizen-satellite-wave-cc9015-54e.webp",
+        amount: 0,
       },
     ]);
     provide(displayedProducts, "displayedProducts");
     const filters = ref(null);
-    // const expectedProducts = computed(function () {
-    //   if (!filters.value) {
-    //     return expectedProducts;
-    //   }
-    //   return (displayedProducts.value = displayedProducts.value.filter(
-    //     (prd1) => {
-    //       if (prd1.price < 250) {
-    //         return prd1.price < 250 && filters.value === "economy";
-    //       } else if (
-    //         prd1.price >= 250 &&
-    //         prd1.price <= 1000 &&
-    //         filters.value === "middle"
-    //       ) {
-    //         return prd1.price >= 250 && prd1.price <= 1000;
-    //       } else if (prd1.price >= 1000) {
-    //         return prd1.price >= 1000 && filters.value === "premium";
-    //       }
-    //     }
-    //   ));
-    // });
+    // const productStore = useProductStore();
+
     function filterEconomic() {
       displayedProducts.value = displayedProducts.value.filter(
         (prd) => prd.price <= 250
@@ -245,90 +243,9 @@ export default {
         }
       });
     }
-    // function expectedProducts() {
-    //   displayedProducts.value = displayedProducts.value.filter((prd1) => {
-    //     if (prd1.price < 250) {
-    //       return prd1.price < 250 && filters.value === "economy";
-    //     } else if (prd1.price > 1000) {
-    //       return prd1.price > 1000 && filters.value === "premium";
-    //     } else {
-    //       prd1.price > 250 && prd1.price < 1000;
-    //       return (
-    //         prd1.price > 250 && prd1.price < 1000 && filters.value === "middle"
-    //       );
-    //     }
-    //   });
-    // }
-    // function sort(mode) {
-    //   sorting.value = mode;
-    // }
-    // const sorting = ref(null);
-    // const sortingByPrice = computed(function () {
-    //   displayedProducts.value = displayedProducts.value.sort((p1, p2) => {
-    //     if (sorting.value === "highest" && p1.price < p2.price) {
-    //       return 1;
-    //     } else if (sorting.value === "highest") {
-    //       return 1;
-    //     } else if (sorting.value === "lowest" && p1.price > p2.price) {
-    //       return -1;
-    //     } else {
-    //       return 0;
-    //     }
-    //   });
-    // });
-    //   const enterfind = ref("");
-    //   const selectedCategProducts = ref("");
-    //   const accesibleProducts = computed(function () {
-    //     let products = [];
-    //     if (selectedCategProducts.value) {
-    //       products = props.products;
-    //       //   products = props.products.filter((prd) =>
-    //       //     prd.price.includes(activeProducts.value)
-    //       //   );
-    //       // } else if (props.products) {
-    //       //   products = props.products;
-    //     }
-    //     return products;
-    //   });
-    //   // watch(enterfind, function (newValue) {
-    //   //   setTimeout(() => {
-    //   //     if (newValue === enterfind.value) {
-    //   //       activeProducts.value = newValue;
-    //   //     }
-    //   //   }, 300);
-    //   // });
-    //   // return accesibleProducts.value.filter().sort((product) => {
-    //   //   if (filters.value === 'premium' && product.price > 1000) {
-    //   //     return
-    //   //   } else if (filters.value === 'middle' && product.price > 250 || product.price < 1000) {
-    //   //     return ;
-    //   //   } else if (filters.value === 'economy' && product.price < 250) {
-    //   //     return ;
-    //   //   } else {
-    //   //     return accesibleProducts.value;
-    //   //   }
-    //   // });
-    //   const filters = ref(null);
-    //   const displayedProducts = computed(function () {
-    //     if (!filters.value) {
-    //       return accesibleProducts.value;
-    //     }
-    //     return accesible.value.filter((prd) => {
-    //       if (filters.value === "premium" && prd.price > 1000) {
-    //         return product.value.price > 1000;
-    //       } else if (
-    //         (filters.value === "middle" && products.price > 250) ||
-    //         product.value.price < 1000
-    //       ) {
-    //         return product.price > 250 || product.price < 1000;
-    //       } else if (filters.value === "economy" && products.price < 250) {
-    //         return product.value.price < 1000;
-    //       } else {
-    //         return product;
-    //       }
-    //     });
-    //   });
+
     return {
+      // productStore,
       filters,
       filterEconomic,
       filterMiddle,
@@ -340,9 +257,5 @@ export default {
       higherPrice,
     };
   },
-
-  //     displayedProducts,
-  //     accesibleProducts,
-  //     enterfind,
 };
 </script>
