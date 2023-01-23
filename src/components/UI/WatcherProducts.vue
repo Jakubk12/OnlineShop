@@ -154,7 +154,7 @@ export default {
         description:
           "An casual men watch  with classic character and silver belt, waterproof until 5 meters",
         img: "https://dolinski.pl/images/ab__webp/detailed/1/Doxa-165-10-015-10_jpg.webp",
-        amount: 0,
+        amount: 1,
       },
       {
         id: "5",

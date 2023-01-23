@@ -31,7 +31,15 @@
     </div>
     <div class="time-box">
       <ul>
+        <!-- <transition
+          name="single"
+          :css="false"
+          @before-enter="BeforeEnter"
+          @enter="Enter"
+          @after-enter="AfterEnter"
+        > -->
         <li class="api">{{ currTime }}</li>
+        <!--   </transition> -->
       </ul>
     </div>
     <div class="empty"></div>
@@ -209,6 +217,8 @@ export default {
   data() {
     return {
       currTime: "",
+      //   endOfAnimation: null,
+      //    timeIsVisible: false,
     };
   },
   methods: {
@@ -231,8 +241,34 @@ export default {
         });
     },
   },
+  // BeforeEnter(el) {
+  //   console.log("before-enter");
+  //   console.log(el);
+  //   el.style.opacity = 0;
+  // },
+  // Enter(el, done) {
+  //   console.log("enter");
+  //   console.log(el);
+  //   let round = 1;
+  //   this.endOfAnimation = setInterval(() => {
+  //     el.style.opacity = round * 0.01;
+  //     round++;
+  //     if (round > 100) {
+  //       clearInterval(this.endOfAnimation);
+  //       done();
+  //     }
+  //   }, 10);
+  // },
+  // AfterEnter(el) {
+  //   console.log(el);
+  //   console.log("after-enter");
+  // },
+  // displayTime() {
+  //   this.timeIsVisible = !this.timeIsVisible;
+  // },
   created() {
     this.settingCurrentTime();
+    //  this.displayTime();
   },
 };
 </script>

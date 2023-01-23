@@ -1,2 +1,9 @@
-import { useProductStore } from "@/stores/modules/CartStore.js";
-useProductStore();
+import { defineStore } from "pinia";
+
+export const useProductStore = defineStore("ProductStore", {
+  state: () => {
+    return {
+      ProductStore,
+    };
+  },
+});

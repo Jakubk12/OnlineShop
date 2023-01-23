@@ -9,8 +9,12 @@
     <img v-if="!detailsAreVisible" :src="img" />
     <ul>
       Amount:
-      <li class="red" v-if="!hasLowAmount">{{ amount }}</li>
-      <li class="green" v-if="hasLowAmount">{{ amount }}</li>
+      <li class="red" v-if="!hasEnoughVal">
+        {{ Math.floor(Math.random(amount) * 10) }}
+      </li>
+      <li class="green" v-if="hasEnoughVal">
+        {{ Math.floor(Math.random(amount) * 10) }}
+      </li>
     </ul>
     <div class="basic">
       <basic-inner-button @click="viewDetails"> Details</basic-inner-button>
@@ -41,8 +45,11 @@ export default {
     function viewDetails() {
       detailsAreVisible.value = !detailsAreVisible.value;
     }
-    const hasPositiveChange = computed(function () {
-      return amount.value < 5;
+    const hasEnoughVal = ref(true);
+    const setColor = computed(function () {
+      if (amount < 5) {
+        return !hasEnoughVal;
+      }
     });
     //function getRandomInt() {
 
@@ -51,7 +58,8 @@ export default {
     return {
       viewDetails,
       detailsAreVisible,
-      hasPositiveChange,
+      setColor,
+      hasEnoughVal,
       //  getRandomInt,
     };
   },
