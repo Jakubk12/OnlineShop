@@ -10,14 +10,6 @@
             :describe="prod.describe"></watcher-products> -->
 </template>
 
-<style lang="scss" scoped>
-.categories {
-  display: flex;
-  justify-content: space-evenly;
-  margin-top: 10vh;
-}
-</style>
-
 <script>
 import BasicSection from "@/components/UI/BasicSection.vue";
 import WatcherProducts from "../../components/UI/WatcherProducts.vue";

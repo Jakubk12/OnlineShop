@@ -48,7 +48,7 @@ export default {
     const hasEnoughVal = ref(true);
     const setColor = computed(function () {
       if (amount < 5) {
-        return !hasEnoughVal;
+        return !hasEnoughVal.value;
       }
     });
     //function getRandomInt() {
