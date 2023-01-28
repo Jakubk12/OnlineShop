@@ -24,7 +24,7 @@
         <basic-inner-button @click="sortAlphZ">Name Z-A</basic-inner-button>
       </div>
     </basic-sidebar>
-    <div class="inner-container">
+    <inner-container>
       <!-- -->
       <products-component
         v-for="product in displayedProducts"
@@ -39,7 +39,7 @@
         :amount="product.amount"
         :id="product.id"
       ></products-component>
-    </div>
+    </inner-container>
   </div>
 </template>
 
@@ -56,44 +56,18 @@ span {
   flex-direction: column;
   align-content: space-between;
 }
-.inner-container {
-  height: auto;
-  width: 90vw;
-  display: grid;
-  list-style-type: none;
-  flex-direction: row;
-  flex-wrap: wrap;
-  grid-template-columns: 25% 25% 25% 25%;
-  grid-template-rows: 3;
-}
-@media screen and (max-width: 1200px) {
-  .inner-container {
-    grid-template-columns: 33% 33% 33%;
-  }
-}
-@media screen and (max-width: 900px) {
-  .inner-container {
-    grid-template-columns: 50% 50%;
-    grid-template-rows: 1;
-    width: 100vw;
-  }
-}
-@media screen and (max-width: 550px) {
-  .inner-container {
-    grid-template-columns: 100%;
-    margin-left: 1rem;
-  }
-}
 </style>
 
 <script>
 import ProductsComponent from "./ProductsComponent.vue";
+import InnerContainer from "./InnerContainer.vue";
 //import { useProductStore } from "@/stores/modules/CartStore.js";
 
 import { ref, inject } from "vue";
 export default {
   components: {
     ProductsComponent,
+    InnerContainer,
   },
   setup() {
     const displayedProducts = inject("products");
