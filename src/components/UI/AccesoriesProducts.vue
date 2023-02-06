@@ -8,7 +8,9 @@
     <li v-if="detailsAreVisible">Price: {{ price }}</li>
     <li v-if="detailsAreVisible">{{ weight }}</li>
     <li v-if="detailsAreVisible">{{ destiny }}</li>
-    <li v-if="detailsAreVisible">Amount:{{ amount }}</li>
+    <li v-if="detailsAreVisible">
+      Amount:{{ Math.floor(Math.random(amount) * 15) }}
+    </li>
     <li v-if="detailsAreVisible">{{ material }}</li>
     <li v-if="detailsAreVisible">{{ properties }}</li>
     <li>{{ img }}</li>
@@ -22,7 +24,7 @@
 </template>
 
 <script>
-import { ref } from "vue";
+import { ref, computed, inject } from "vue";
 export default {
   props: [
     "name",
@@ -38,16 +40,29 @@ export default {
     "properties",
     "img",
   ],
-
   setup() {
     const detailsAreVisible = ref(false);
+    const accesories = inject("accesories");
     function viewDetails() {
       detailsAreVisible.value = !detailsAreVisible.value;
     }
+    const randomAmount = computed(function () {
+      return amount.value.math.floor(Math.random() * 15);
+    });
+
     return {
       detailsAreVisible,
       viewDetails,
+      randomAmount,
+      accesories,
     };
+  },
+  methods: {
+    AddToCart() {
+      const selectedProduct = [];
+      this.accesories.push(selectedProduct);
+      this.$router.push("/Amounts/Cart");
+    },
   },
 };
 </script>

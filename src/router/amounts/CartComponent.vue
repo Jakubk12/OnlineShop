@@ -17,3 +17,16 @@
   justify-content: center;
 }
 </style>
+<script>
+import { inject } from "vue";
+export default {
+  setup() {
+    const products = inject("products");
+    const accesories = inject("accersories");
+    return {
+      products,
+      accesories,
+    };
+  },
+};
+</script>
