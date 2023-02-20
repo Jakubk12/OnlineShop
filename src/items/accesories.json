@@ -1,0 +1,124 @@
+[
+  {
+    "name": "Atlantic",
+    "model": "blue",
+    "type": "belt",
+    "country": "Switzerland",
+    "material": "natural leather",
+    "pattern": "plain",
+    "price": 25,
+    "amount": 0,
+    "img": ""
+  },
+  {
+    "name": "Atlantic",
+    "model": "black",
+    "type": "belt",
+    "country": "Swiss",
+    "material": "natural leather",
+    "pattern": "aligator",
+    "price": 28,
+    "amount": 0,
+    "img": ""
+  },
+  {
+    "name": "Atlantic",
+    "model": "bronze",
+    "type": "belt",
+    "country": "Switzerland",
+    "material": "natural leather",
+    "pattern": "aligator",
+    "price": 25,
+    "amount": 0,
+    "img": ""
+  },
+  {
+    "name": "BECO",
+    "model": "beco",
+    "type": "etui",
+    "country": "Germany",
+    "material": "material, plastic",
+    "pattern": "palin",
+    "price": 14,
+    "amount": 0,
+    "img": ""
+  },
+  {
+    "name": "Leanschi",
+    "model": "WPO1-CHOC",
+    "type": "etui",
+    "country": "Austria",
+    "material": "vegan leather",
+    "pattern": "",
+    "price": 45,
+    "amount": 0,
+    "img": ""
+  },
+  {
+    "name": "Leanschi",
+    "model": "UPO1-CHOC",
+    "type": "etui",
+    "country": "Austria",
+    "material": "vegan leather",
+    "pattern": "",
+    "price": 45,
+    "amount": 0,
+    "img": ""
+  },
+  {
+    "name": "POLAROID",
+    "model": "PLD4086/S 807/WJ",
+    "type": "glasses",
+    "properties": "UV400, CE",
+    "destiny": "Woman",
+    "material": "polycarbonate",
+    "weight": "20g",
+    "price": 45,
+    "amount": 0,
+    "img": ""
+  },
+  {
+    "name": "POLAROID",
+    "model": "PLD6012/N/NEW 6LB/WJ",
+    "type": "glasses",
+    "properties": "CE, UV400, ",
+    "material": "surgical steel",
+    "destiny": "Unisex",
+    "price": 45,
+    "amount": 0,
+    "img": ""
+  },
+  {
+    "name": "WOLF",
+    "model": "British Racing 792202",
+    "type": "Winder",
+    "country": "UK",
+    "material": "leather",
+    "powersupply": "battery",
+    "price": 1600,
+    "amount": 0,
+    "img": ""
+  },
+  {
+    "name": "WOLF",
+    "model": "British Racing 792102",
+    "type": "Winder",
+    "country": "UK",
+    "material": "leather",
+    "powersupply": "battery",
+    "price": 850,
+    "amount": 0,
+    "img": ""
+  },
+  {
+    "name": "BECO",
+    "model": "Boxy BLDC Nightstand Graphic Blue 309135 ",
+    "type": "Winder",
+    "country": "Germany",
+    "material": "plastic, material",
+    "powersupply": "main",
+    "price": 180,
+    "amount": 0,
+    "img": ""
+  }
+]
