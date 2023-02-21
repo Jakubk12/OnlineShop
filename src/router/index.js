@@ -6,7 +6,7 @@ import ContactComponent from "./pages/ContactComponent.vue";
 import AccesoriesComponent from "./Items/AccesoriesComponent.vue";
 import ManComponent from "./Items/ManComponent.vue";
 import WomanComponent from "./Items/WomanComponent.vue";
-import CartComponent from "./amounts/CartComponent.vue";
+import CartComponent from "../components/UI/amounts/CartComponent.vue";
 
 const router = createRouter({
   history: createWebHistory(),

@@ -64,6 +64,11 @@ export default {
       this.$router.push("/Amounts/Cart");
     },
   },
+  provide() {
+    return {
+      selectedProduct: this.selectedProduct,
+    };
+  },
 };
 </script>
 
