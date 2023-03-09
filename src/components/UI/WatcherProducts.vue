@@ -72,7 +72,7 @@ export default {
   setup() {
     const displayedProducts = inject("products");
     const filters = ref(null);
-    // const productStore = useProductStore();
+    //  const productStore = useProductStore();
 
     function filterEconomic() {
       displayedProducts.value = displayedProducts.value.filter(

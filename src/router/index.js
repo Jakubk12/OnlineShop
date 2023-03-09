@@ -46,4 +46,7 @@ const router = createRouter({
     },
   ],
 });
+//router.beforeEach((to) => {
+//  const store = useStore();
+//});
 export default router;
