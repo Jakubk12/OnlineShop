@@ -233,16 +233,38 @@ export default {
         img: "",
       },
     ]);
+    console.log(products);
     // link do zdjec produktowych: jakby coś, jest w historii przegladania, dzien 28.01.23 godzina miedzy 10 a 11, google chrome.
-
-    const test = Object.assign(products);
-    console.log(test);
+    const selectedProd = ref([]);
+    const prods = ref([]);
+    function addToCart() {
+      products.forEach(function (elem, index) {
+        products.splice(index, 1);
+        selectedProd.push(elem);
+        prods.value = selectedProd.concat(selectedAcces);
+      });
+    }
+    const selectedAcces = ref([]);
+    function addAcces() {
+      accesories.forEach(function (elem, index) {
+        accesories.splice(index, 1);
+        selectedAcces.push(elem);
+        prods.value = selectedAcces.concat(selectedProd);
+      });
+    }
+    provide("selectedProd", selectedProd);
+    // const test = Object.assign(products);
+    // console.log(test);
     provide("accesories", accesories);
     provide("products", products);
+    provide("addToCart", addToCart);
+    provide("addAcces", addAcces);
+    provide("prods", prods);
     return {
       products,
       accesories,
-      test,
+      //test,
+      prods,
     };
   },
 };

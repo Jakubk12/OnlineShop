@@ -26,7 +26,7 @@
 </template>
 
 <script>
-import { ref, computed } from "vue";
+import { ref, computed, inject } from "vue";
 export default {
   props: [
     "id",
@@ -41,6 +41,12 @@ export default {
   ],
   methods: {},
   setup() {
+    //const prods = inject("products");
+    const addToCart = inject("addToCart");
+
+    function addProds() {
+      addToCart();
+    }
     const detailsAreVisible = ref(false);
     function viewDetails() {
       detailsAreVisible.value = !detailsAreVisible.value;
@@ -51,6 +57,14 @@ export default {
         return !hasEnoughVal.value;
       }
     });
+    // const selectedProd = ref([]);
+    // function addToCart() {
+    //   prods.forEach(function (elem, index) {
+    //     prods.splice(index, 1);
+    //     selectedProd.push(elem);
+    //   });
+    // }
+    // provide("selectedProd", selectedProd);
     //function getRandomInt() {
 
     //   };
@@ -60,6 +74,10 @@ export default {
       detailsAreVisible,
       setColor,
       hasEnoughVal,
+      //  selectedProd,
+      // prods,
+      addToCart: addToCart,
+      addProds,
       //  getRandomInt,
     };
   },

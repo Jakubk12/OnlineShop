@@ -1,9 +1,39 @@
 <template>
   <basic-section>
     <div class="container-parent">
-      <cart-inside>
-        <h1>{{ selectedProduct.name }}</h1>
+      <cart-inside
+        v-for="prod in prods"
+        :key="prod.id"
+        :type="prod.type"
+        :name="prod.name"
+        :glass="prod.glass"
+        :price="prod.price"
+        :destiny="prod.destiny"
+        :description="prod.description"
+        :img="prod.img"
+        :amount="prod.amount"
+      >
+        <h1>{{ name }}</h1>
+        <h1>{{ price }}</h1>
+        <h1>{{ glass }}</h1>
+        <h1>{{ price }}</h1>
+        <h1>{{ destiny }}</h1>
+        <h1>{{ description }}</h1>
+        <h1>{{ img }}</h1>
+        <h1>{{ amount }}</h1>
+        <h1>{{ img }}</h1>
+        <h1>{{ amount }}</h1>
       </cart-inside>
+
+      <!--  id: "1",
+        type: "swiss",
+        name: "Hugo Boss Hero 1513755",
+        glass: "saphire",
+        price: 360,
+        destiny: "men",
+        description: "An elegance and endurant silver watch for men",
+        img: "https://zegarkinareke.pl/userdata/public/gfx/4750.jpg",
+        amount: 0,-->
     </div>
   </basic-section>
 </template>
@@ -18,22 +48,15 @@
 <script>
 import BasicContainer from "@/components/UI/BasicContainer.vue";
 import CartInside from "./subcomponent/CartInside.vue";
+import { ref, inject } from "vue";
 export default {
-  props: ["selectedProduct"],
   components: { BasicContainer, CartInside },
-  data() {
+  setup() {
+    const allProds = inject("prods");
+
     return {
-      mainProducts: this.selectedProduct,
+      prods: allProds,
     };
   },
-  created() {},
-  // methods: {
-  //   addToCart() {
-  //     this.productsList.push(cart);
-  //   },
-  // },
-  // created() {
-  //   this.addToCart();
-  // },
 };
 </script>

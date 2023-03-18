@@ -1,4 +1,4 @@
-import { useCartStore } from "@/stores/modules/CartStore";
+/* import { useCartStore } from "@/stores/modules/CartStore";
 import { useProductStore } from "./modules/ProductStore";
 export default {
   setup() {
@@ -11,4 +11,4 @@ export default {
       stores,
     };
   },
-};
+} */
