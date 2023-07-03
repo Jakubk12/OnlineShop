@@ -53,76 +53,39 @@ export default {
     provide("selectedProducts", selectedProducts);
 
     function showAll() {
-      if (accesories.type === "etui") {
-        BoxesAreVisible.value = true;
-      } else if (accesories.type === "glasses") {
-        GlassesAreVisible.value = true;
-      } else if (accesories.type === "winder") {
-        WinderAreVisible.value = true;
-      } else if (accesories.type === "belt") {
-        BeltsAreVisible.value = true;
-      }
+      selectedProducts.value = accesories.filter((acces) => acces.type !== "");
     }
+
     function showBelts() {
-      if (accesories.type === "belt") {
-        BeltsAreVisible.value = true;
-      }
-      if (accesories.type === "etui") {
-        BoxesAreVisible.value = false;
-      }
-      if (accesories.type === "winder") {
-        WinderAreVisible.value = false;
-      }
-      if (accesories.type === "glasses") {
-        GlassesAreVisible.value = false;
-      }
+      selectedProducts.value = accesories.filter(
+        (acces) => acces.type === "belt"
+      );
     }
+
     function showGlasses() {
-      if (accesories.type === "belt") {
-        BeltsAreVisible.value = false;
-      }
-      if (accesories.type === "etui") {
-        BoxesAreVisible.value = false;
-      }
-      if (accesories.type === "winder") {
-        WinderAreVisible.value = false;
-      }
-      if (accesories.type === "glasses") {
-        GlassesAreVisible.value = true;
-      }
+      selectedProducts.value = accesories.filter(
+        (acces) => acces.type === "glasses"
+      );
     }
+
     function showBoxes() {
-      if (accesories.type === "belt") {
-        BeltsAreVisible.value = false;
-      }
-      if (accesories.type === "etui") {
-        BoxesAreVisible.value = true;
-      }
-      if (accesories.type === "winder") {
-        WinderAreVisible.value = false;
-      }
-      if (accesories.type === "glasses") {
-        GlassesAreVisible.value = false;
-      }
+      selectedProducts.value = accesories.filter(
+        (acces) => acces.type === "etui"
+      );
     }
-    function showBelts() {
-      if (accesories.type === "belt") {
-        BeltsAreVisible.value = true;
-      }
-      if (accesories.type === "etui") {
-        BoxesAreVisible.value = false;
-      }
-      if (accesories.type === "winder") {
-        WinderAreVisible.value = false;
-      }
-      if (accesories.type === "glasses") {
-        GlassesAreVisible.value = false;
-      }
+
+    function showWinders() {
+      selectedProducts.value = accesories.filter(
+        (acces) => acces.type === "winder"
+      );
     }
     return {
       accesories,
       showAll,
       showBelts,
+      showGlasses,
+      showWinders,
+      showBoxes,
       GlassesAreVisible,
       BoxesAreVisible,
       BeltsAreVisible,
